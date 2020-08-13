@@ -25,17 +25,13 @@ class StartPage(BasePage):
     def accept_alert(self):
         Alert(self.driver).accept()
 
-    def check_successfully_accept_alert(self):
+    def get_text_from_result_field(self):
         result = BaseElement(StartPageLocators.RESULT, self.driver)
         return result.get_text()
 
     def click_on_confirm(self):
         button = Button(StartPageLocators.CONFIRM, self.driver)
         button.click()
-
-    def check_successfully_accept_confirm(self):
-        result = BaseElement(StartPageLocators.RESULT, self.driver)
-        return result.get_text()
 
     def click_on_js_prompt(self):
         button = Button(StartPageLocators.PROMPT, self.driver)
@@ -44,6 +40,3 @@ class StartPage(BasePage):
     def send_keys_in_modal_window(self, keys):
         Alert(self.driver).send_keys(keys)
 
-    def check_successfully_send_keys(self):
-        result = BaseElement(StartPageLocators.RESULT, self.driver)
-        return result.get_text()
