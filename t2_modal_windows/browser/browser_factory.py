@@ -1,5 +1,5 @@
 from t2_modal_windows.browser.singleton_get_browser import get_chrome, get_firefox
-from t2_modal_windows.logger import appLogger
+from t2_modal_windows.logger.logger import appLogger
 
 
 class Browser:

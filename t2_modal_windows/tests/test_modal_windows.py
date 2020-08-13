@@ -1,6 +1,6 @@
 from t2_modal_windows.all_pages.start_page import StartPage
 from t2_modal_windows.helpers.helpers import get_config_data, get_asset_data, generate_random_text
-from t2_modal_windows.logger import appLogger
+from t2_modal_windows.logger.logger import appLogger
 
 
 CONFIG_DATA = get_config_data()

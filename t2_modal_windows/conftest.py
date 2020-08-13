@@ -1,6 +1,6 @@
 import pytest
 from t2_modal_windows.browser.browser_factory import Browser
-from t2_modal_windows.logger import appLogger
+from t2_modal_windows.logger.logger import appLogger
 from t2_modal_windows.helpers.helpers import get_config_data
 
 CONFIG_DATA = get_config_data()
