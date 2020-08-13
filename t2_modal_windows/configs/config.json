@@ -1,0 +1,6 @@
+{
+    "URL": "http://the-internet.herokuapp.com/javascript_alerts",
+    "BROWSER": "Chrome",
+    "default_timeout": 7,
+    "LOG_FILE": "./t2_modal_windows/app.log"
+}

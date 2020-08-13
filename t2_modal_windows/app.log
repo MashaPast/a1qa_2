@@ -1,0 +1,94 @@
+2020-08-13 12:18:25,093 DEBUG Set-up
+2020-08-13 12:18:25,093 DEBUG Get Chrome driver
+2020-08-13 12:18:25,126 INFO Current google-chrome version is 83.0.4103
+2020-08-13 12:18:25,126 INFO Get LATEST driver version for 83.0.4103
+2020-08-13 12:18:25,129 DEBUG Starting new HTTP connection (1): chromedriver.storage.googleapis.com:80
+2020-08-13 12:18:25,192 DEBUG http://chromedriver.storage.googleapis.com:80 "GET /LATEST_RELEASE_83.0.4103 HTTP/1.1" 200 12
+2020-08-13 12:18:25,199 INFO Driver [/home/masha/.wdm/drivers/chromedriver/linux64/83.0.4103.39/chromedriver] found in cache
+2020-08-13 12:18:26,211 DEBUG POST http://127.0.0.1:50195/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-08-13 12:18:26,213 DEBUG Starting new HTTP connection (1): 127.0.0.1:50195
+2020-08-13 12:18:26,633 DEBUG http://127.0.0.1:50195 "POST /session HTTP/1.1" 200 680
+2020-08-13 12:18:26,633 DEBUG Finished Request
+2020-08-13 12:18:26,633 DEBUG Maximize browser window
+2020-08-13 12:18:26,634 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/window/maximize {}
+2020-08-13 12:18:26,738 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/window/maximize HTTP/1.1" 200 52
+2020-08-13 12:18:26,738 DEBUG Finished Request
+2020-08-13 12:18:26,739 DEBUG Opening browser
+2020-08-13 12:18:26,739 DEBUG Open http://the-internet.herokuapp.com/javascript_alerts
+2020-08-13 12:18:26,739 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/url {"url": "http://the-internet.herokuapp.com/javascript_alerts"}
+2020-08-13 12:18:29,246 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/url HTTP/1.1" 200 14
+2020-08-13 12:18:29,247 DEBUG Finished Request
+2020-08-13 12:18:29,247 DEBUG Click “Click for JS Alert” button
+2020-08-13 12:18:29,248 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"content\"]//*[contains(text(), \"Click for JS Alert\")]"}
+2020-08-13 12:18:29,262 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,262 DEBUG Finished Request
+2020-08-13 12:18:29,262 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/8b105863-eb18-4a30-a9a2-d9ac0aac44da/click {"id": "8b105863-eb18-4a30-a9a2-d9ac0aac44da"}
+2020-08-13 12:18:29,322 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element/8b105863-eb18-4a30-a9a2-d9ac0aac44da/click HTTP/1.1" 200 14
+2020-08-13 12:18:29,322 DEBUG Finished Request
+2020-08-13 12:18:29,322 DEBUG Switch to JS Alert
+2020-08-13 12:18:29,322 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/text {}
+2020-08-13 12:18:29,323 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/alert/text HTTP/1.1" 200 27
+2020-08-13 12:18:29,323 DEBUG Finished Request
+2020-08-13 12:18:29,323 DEBUG Accept alert
+2020-08-13 12:18:29,324 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/accept {}
+2020-08-13 12:18:29,325 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/alert/accept HTTP/1.1" 200 14
+2020-08-13 12:18:29,326 DEBUG Finished Request
+2020-08-13 12:18:29,326 DEBUG Check result
+2020-08-13 12:18:29,326 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"result\"]"}
+2020-08-13 12:18:29,342 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,342 DEBUG Finished Request
+2020-08-13 12:18:29,342 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text {"id": "dbccf784-ff91-4c28-853d-26e5bd4966c5"}
+2020-08-13 12:18:29,356 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text HTTP/1.1" 200 44
+2020-08-13 12:18:29,356 DEBUG Finished Request
+2020-08-13 12:18:29,356 DEBUG Click “Click for JS Confirm” button
+2020-08-13 12:18:29,357 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"content\"]//*[contains(text(), \"Click for JS Confirm\")]"}
+2020-08-13 12:18:29,368 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,369 DEBUG Finished Request
+2020-08-13 12:18:29,369 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/c43e4f75-7203-4f0a-acd8-c96636675ba2/click {"id": "c43e4f75-7203-4f0a-acd8-c96636675ba2"}
+2020-08-13 12:18:29,406 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element/c43e4f75-7203-4f0a-acd8-c96636675ba2/click HTTP/1.1" 200 14
+2020-08-13 12:18:29,407 DEBUG Finished Request
+2020-08-13 12:18:29,407 DEBUG Switch to JS Confirm
+2020-08-13 12:18:29,407 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/text {}
+2020-08-13 12:18:29,408 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/alert/text HTTP/1.1" 200 29
+2020-08-13 12:18:29,408 DEBUG Finished Request
+2020-08-13 12:18:29,408 DEBUG Accept alert
+2020-08-13 12:18:29,408 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/accept {}
+2020-08-13 12:18:29,410 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/alert/accept HTTP/1.1" 200 14
+2020-08-13 12:18:29,410 DEBUG Finished Request
+2020-08-13 12:18:29,410 DEBUG Check result
+2020-08-13 12:18:29,410 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"result\"]"}
+2020-08-13 12:18:29,418 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,418 DEBUG Finished Request
+2020-08-13 12:18:29,418 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text {"id": "dbccf784-ff91-4c28-853d-26e5bd4966c5"}
+2020-08-13 12:18:29,427 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text HTTP/1.1" 200 27
+2020-08-13 12:18:29,427 DEBUG Finished Request
+2020-08-13 12:18:29,427 DEBUG Click “Click for JS Prompt” button
+2020-08-13 12:18:29,428 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"content\"]//*[contains(text(), \"Click for JS Prompt\")]"}
+2020-08-13 12:18:29,439 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,439 DEBUG Finished Request
+2020-08-13 12:18:29,440 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/39078e91-be76-448e-b2dd-dad5b159d196/click {"id": "39078e91-be76-448e-b2dd-dad5b159d196"}
+2020-08-13 12:18:29,493 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element/39078e91-be76-448e-b2dd-dad5b159d196/click HTTP/1.1" 200 14
+2020-08-13 12:18:29,494 DEBUG Finished Request
+2020-08-13 12:18:29,494 DEBUG Switch to JS Prompt
+2020-08-13 12:18:29,494 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/text {}
+2020-08-13 12:18:29,495 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/alert/text HTTP/1.1" 200 28
+2020-08-13 12:18:29,495 DEBUG Finished Request
+2020-08-13 12:18:29,495 DEBUG Send keys to JS Prompt
+2020-08-13 12:18:29,495 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/text {"value": ["v", "J", "1", "8", "h", "i", "v", "w", "B", "N", "M", "v", "T", "z", "T", "1", "Q", "5", "o", "H"], "text": "vJ18hivwBNMvTzT1Q5oH"}
+2020-08-13 12:18:29,496 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/alert/text HTTP/1.1" 200 14
+2020-08-13 12:18:29,497 DEBUG Finished Request
+2020-08-13 12:18:29,497 DEBUG Accept alert
+2020-08-13 12:18:29,497 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/alert/accept {}
+2020-08-13 12:18:29,501 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/alert/accept HTTP/1.1" 200 14
+2020-08-13 12:18:29,502 DEBUG Finished Request
+2020-08-13 12:18:29,502 DEBUG Check result with random string
+2020-08-13 12:18:29,502 DEBUG POST http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element {"using": "xpath", "value": "//*[@id=\"result\"]"}
+2020-08-13 12:18:29,511 DEBUG http://127.0.0.1:50195 "POST /session/efd8181407161c6e29419022c9f16074/element HTTP/1.1" 200 88
+2020-08-13 12:18:29,511 DEBUG Finished Request
+2020-08-13 12:18:29,511 DEBUG GET http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text {"id": "dbccf784-ff91-4c28-853d-26e5bd4966c5"}
+2020-08-13 12:18:29,519 DEBUG http://127.0.0.1:50195 "GET /session/efd8181407161c6e29419022c9f16074/element/dbccf784-ff91-4c28-853d-26e5bd4966c5/text HTTP/1.1" 200 45
+2020-08-13 12:18:29,519 DEBUG Finished Request
+2020-08-13 12:18:29,520 DEBUG Tear-down
+2020-08-13 12:18:29,520 DEBUG DELETE http://127.0.0.1:50195/session/efd8181407161c6e29419022c9f16074 {}
+2020-08-13 12:18:29,571 DEBUG http://127.0.0.1:50195 "DELETE /session/efd8181407161c6e29419022c9f16074 HTTP/1.1" 200 14
+2020-08-13 12:18:29,572 DEBUG Finished Request
