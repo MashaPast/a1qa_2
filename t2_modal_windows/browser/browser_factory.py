@@ -6,7 +6,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 class Browser:
     @staticmethod
-    def factory(browser_name: str):
+    def get_browser_by_name(browser_name: str):
         if browser_name == "Chrome":
             return Chrome().get_browser()
         if browser_name == "Firefox":
