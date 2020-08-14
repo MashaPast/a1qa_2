@@ -2,35 +2,41 @@ import json
 from os.path import abspath
 import random
 import string
-
-cache = {}
-cache2 = {}
+from selenium.webdriver.common.by import By
 
 
-def get_config_data():
-    if cache.get('config_data'):
-        return cache.get('config_data')
+class Loader:
+    config = None
+    asset = None
 
-    with open(abspath('./t2_modal_windows/configs/config.json')) as conf:
-        data = json.load(conf)
-        cache['config_data'] = data
-        return data
+    @staticmethod
+    def read_json_file(path) -> dict:
+        with open(abspath(path)) as conf:
+            data = json.load(conf)
+            return data
+
+    @staticmethod
+    def get_config_data():
+        if Loader.config is None:
+            config = Loader.read_json_file('./t2_modal_windows/configs/config.json')
+            return config
+        else:
+            return Loader.config
+
+    @staticmethod
+    def get_asset_data():
+        if Loader.asset is None:
+            asset = Loader.read_json_file('./t2_modal_windows/assets/asset.json')
+            return asset
+        else:
+            return Loader.asset
 
 
-CONFIG_DATA = get_config_data()
-
-
-def get_asset_data():
-    if cache2.get('test_data'):
-        return cache2.get('test_data')
-
-    with open(abspath('./t2_modal_windows/assets/asset.json')) as conf:
-        data = json.load(conf)
-        cache2['test_data'] = data
-        return data
-
-
-def generate_random_text():
-    random_str = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(20)])
+def generate_random_text(n=20):
+    random_str = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(n)])
     return random_str
 
+
+def build_locator(locator, param1: str):
+    new_locator = (By.XPATH, locator.format(param1))
+    return new_locator

@@ -1,10 +1,10 @@
 from t2_modal_windows.all_pages.start_page import StartPage
-from t2_modal_windows.helpers.helpers import get_config_data, get_asset_data, generate_random_text
+from t2_modal_windows.helpers.helpers import Loader, generate_random_text
 from t2_modal_windows.logger.logger import log
 
 
-CONFIG_DATA = get_config_data()
-ASSET = get_asset_data()
+CONFIG_DATA = Loader.get_config_data()
+ASSET = Loader.get_asset_data()
 
 
 def test_modal_windows(browser):

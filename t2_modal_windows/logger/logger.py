@@ -1,8 +1,12 @@
 import logging
-from t2_modal_windows.helpers.helpers import get_config_data
+from t2_modal_windows.helpers.helpers import Loader
+import time
 
-CONFIG_DATA = get_config_data()
+timestamp = int(time.time())
 
-logging.basicConfig(filename=CONFIG_DATA["LOG_FILE"], filemode='w', format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
+CONFIG_DATA = Loader.get_config_data()
+
+logging.basicConfig(filename=CONFIG_DATA["LOG_DIR"] + str(timestamp) + ".log", filemode='w', format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
 
 log = logging
+

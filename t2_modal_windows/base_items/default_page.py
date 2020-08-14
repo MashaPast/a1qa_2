@@ -1,9 +1,9 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from t2_modal_windows.helpers.helpers import get_config_data
+from t2_modal_windows.helpers.helpers import Loader
 
 
-CONFIG_DATA = get_config_data()
+CONFIG_DATA = Loader.get_config_data()
 
 
 class BasePage:
