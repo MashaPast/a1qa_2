@@ -37,6 +37,6 @@ def generate_random_text(n=20):
     return random_str
 
 
-def build_locator(locator, param1: str):
-    new_locator = (By.XPATH, locator.format(param1))
+def build_locator(locator_type, locator, button_text: str):
+    new_locator = (locator_type, locator.format(button_text))
     return new_locator

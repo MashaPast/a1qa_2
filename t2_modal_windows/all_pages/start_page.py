@@ -14,7 +14,7 @@ class StartPage(BasePage):
         super().__init__(driver)
 
     def click_on_alert(self):
-        alert = build_locator(StartPage.ALERT_BUTTON, '"Click for JS Alert"')
+        alert = build_locator(By.XPATH, StartPage.ALERT_BUTTON, '"Click for JS Alert"')
         button = Button(alert, self.driver)
         button.click()
 
@@ -29,12 +29,12 @@ class StartPage(BasePage):
         return result.get_text()
 
     def click_on_confirm(self):
-        alert = build_locator(StartPage.ALERT_BUTTON, '"Click for JS Confirm"')
+        alert = build_locator(By.XPATH, StartPage.ALERT_BUTTON, '"Click for JS Confirm"')
         button = Button(alert, self.driver)
         button.click()
 
     def click_on_js_prompt(self):
-        alert = build_locator(StartPage.ALERT_BUTTON, '"Click for JS Prompt"')
+        alert = build_locator(By.XPATH, StartPage.ALERT_BUTTON, '"Click for JS Prompt"')
         button = Button(alert, self.driver)
         button.click()
 
