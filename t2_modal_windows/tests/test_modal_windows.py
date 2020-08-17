@@ -3,8 +3,8 @@ from t2_modal_windows.helpers.helpers import Loader, generate_random_text
 from t2_modal_windows.logger.logger import log
 
 
-CONFIG_DATA = Loader.get_config_data()
-TEST_DATA = Loader.get_asset_data()
+CONFIG_DATA = Loader.get_config()
+TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
 
 def test_modal_windows(browser):
@@ -52,4 +52,3 @@ def test_modal_windows(browser):
 
     log.info('Check result with random string')
     assert start_page.get_text_from_result_field() == TEST_DATA["prompt_success_result"] + random_str
-

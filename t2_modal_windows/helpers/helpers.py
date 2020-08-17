@@ -2,12 +2,11 @@ import json
 from os.path import abspath
 import random
 import string
-from selenium.webdriver.common.by import By
+import os
 
 
 class Loader:
-    config = None
-    asset = None
+    data = None
 
     @staticmethod
     def read_json_file(path) -> dict:
@@ -16,20 +15,12 @@ class Loader:
             return data
 
     @staticmethod
-    def get_config_data():
-        if Loader.config is None:
-            config = Loader.read_json_file('./t2_modal_windows/configs/config.json')
+    def get_config():
+        if Loader.data is None:
+            config = Loader.read_json_file(os.environ["CONFIG"])
             return config
         else:
-            return Loader.config
-
-    @staticmethod
-    def get_asset_data():
-        if Loader.asset is None:
-            asset = Loader.read_json_file('./t2_modal_windows/assets/asset.json')
-            return asset
-        else:
-            return Loader.asset
+            return Loader.data
 
 
 def generate_random_text(n=20):

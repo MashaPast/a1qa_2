@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from t2_modal_windows.helpers.helpers import Loader
 
 
-CONFIG_DATA = Loader.get_config_data()
+CONFIG_DATA = Loader.get_config()
 
 
 class BaseElement(ABC):
