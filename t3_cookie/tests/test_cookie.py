@@ -21,6 +21,25 @@ def test_cookie(browser):
     start_page.add_cookie(TEST_DATA["cookie2"])
     start_page.add_cookie(TEST_DATA["cookie3"])
 
-    assert TEST_DATA["cookie1"]['name'] in start_page.get_cookie()[-1]['name']
-    assert TEST_DATA["cookie2"]['name'] in start_page.get_cookie()[-2]['name']
-    assert TEST_DATA["cookie3"]['name'] in start_page.get_cookie()[-3]['name']
+    log.info('Check cookie added')
+    assert start_page.get_cookie_by_name(TEST_DATA["cookie1"]['name']) is not None
+    assert start_page.get_cookie_by_name(TEST_DATA["cookie2"]['name']) is not None
+    assert start_page.get_cookie_by_name(TEST_DATA["cookie3"]['name']) is not None
+
+    log.info('Delete cookie with example_key_1')
+    start_page.del_cookie_by_name(TEST_DATA["cookie1"]['name'])
+
+    log.info('Check cookie deleted')
+    assert start_page.get_cookie_by_name(TEST_DATA["cookie1"]['name']) is None
+
+    log.info('Add example_value_300 for cookie with example_key_3')
+    start_page.add_cookie(TEST_DATA["updated_value_cookie"])
+
+    log.info('Check cookie value is updated')
+    assert start_page.get_cookie_value(TEST_DATA["updated_value_cookie"]['name']) == TEST_DATA["updated_value_cookie"]['value']
+
+    log.info('Delete all cookie')
+    start_page.del_all_cookies()
+
+    log.info('Check cookie deleted')
+    assert start_page.get_all_cookies() == []

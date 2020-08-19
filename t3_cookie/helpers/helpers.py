@@ -20,3 +20,4 @@ class Loader:
         else:
             return Loader.data
 
+

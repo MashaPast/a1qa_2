@@ -10,5 +10,9 @@
     "cookie3": {
         "name": "example_key_3",
         "value": "example_value_3"
+    },
+    "updated_value_cookie": {
+        "name": "example_key_3",
+        "value": "example_value_300"
     }
 }

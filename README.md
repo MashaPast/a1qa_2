@@ -13,3 +13,13 @@ python3 -m pytest -v -s t2_modal_windows/tests/test_modal_windows.py
 ```bash 
 export CONFIG='./t2_modal_windows/configs/config.json'
 ```
+
+### Task 3
+* running task 3
+```bash 
+python3 -m pytest -v -s t3_cookie/tests/test_cookie.py 
+```
+* environment variable for path to config
+```bash 
+export CONFIG='./t3_cookie/configs/config.json'
+```
