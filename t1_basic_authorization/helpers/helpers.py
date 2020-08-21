@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 from t1_basic_authorization.helpers.config_loader import get_data
 
-CONFIG_DATA = get_data("./t1_basic_authorization/configs/config.json")
+CONFIG_DATA = get_data("./t1_basic_authorization/configs/configs.json")
 TEST_DATA = get_data("./t1_basic_authorization/test_data/test_data.json")
 
 

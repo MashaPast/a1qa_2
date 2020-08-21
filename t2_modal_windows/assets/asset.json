@@ -1,0 +1,5 @@
+{
+    "alert_success_result": "You successfuly clicked an alert",
+    "confirm_success_result": "You clicked: Ok",
+    "prompt_success_result": "You entered: "
+}
