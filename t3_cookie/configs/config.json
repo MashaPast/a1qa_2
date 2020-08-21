@@ -1,0 +1,7 @@
+{
+    "URL": "http://example.com/",
+    "BROWSER": "Chrome",
+    "default_timeout": 7,
+    "LOG_DIR": "./t3_cookie/logger/",
+    "ASSET_PATH": "./t3_cookie/assets/asset.json"
+}
