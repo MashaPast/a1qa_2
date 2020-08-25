@@ -1,0 +1,7 @@
+{
+    "URL": "http://the-internet.herokuapp.com/iframe",
+    "BROWSER": "Chrome",
+    "default_timeout": 7,
+    "LOG_DIR": "./t4_iframe/tests/logs/",
+    "ASSET_PATH": "./t4_iframe/resources/test_data.json"
+}
