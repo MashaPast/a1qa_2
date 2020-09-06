@@ -1,5 +1,4 @@
 from abc import ABC
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from t5_userinyerface import CONFIG_DATA
@@ -16,16 +15,3 @@ class BaseElement(ABC):
                                                     message=f"Can't find element by locator {self.locator}")
 
 
-class Button(BaseElement):
-    def click_on_button(self):
-        self.find_element().click()
-
-    def check_form_exists(self):
-        try:
-            self.find_element()
-            return True
-        except TimeoutException:
-            return False
-
-    def get_text(self):
-        return self.find_element().text

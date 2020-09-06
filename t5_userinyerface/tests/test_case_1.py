@@ -1,8 +1,9 @@
+from t5_userinyerface.pages.auth_page import UserFormAuthPage
+from t5_userinyerface.pages.interests_page import InterestsPage
 from t5_userinyerface.pages.start_page import StartPage
 from t5_userinyerface.helpers.loader import Loader
 from t5_userinyerface.logger.logger import log
 from t5_userinyerface import CONFIG_DATA
-from t5_userinyerface.helpers.helpers import generate_random_text
 
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
@@ -13,18 +14,40 @@ def test_userinyrface(browser):
     log.info('Openning page')
     start_page.go_to_site(CONFIG_DATA["URL"])
 
-    log.info('Check https://userinyerface.com/game.html%20target= is opened')
-    # assert start_page.get_header_text() == TEST_DATA["iFrame_header"]
+    log.info('Assert welcome page is opened')
+    assert start_page.check_auth_page_is_open() == True
 
     log.info('Click to go the next page')
     start_page.click_on_link_to_next_page()
 
     log.info('Assert first card to enter information is opened')
+    user_form_auth_page = UserFormAuthPage(browser)
+    assert user_form_auth_page.check_card_is_opened() == TEST_DATA["first_card_number"]
 
     log.info('Enter correct password, email and accept terms. Click "next"')
+    user_form_auth_page.clear_pass()
+    user_form_auth_page.clear_email()
+    user_form_auth_page.clear_domain()
+
+    user_form_auth_page.fill_pass()
+    user_form_auth_page.fill_email()
+    user_form_auth_page.fill_domain(TEST_DATA["domain"])
+
+    user_form_auth_page.click_to_accept_terms()
+    user_form_auth_page.click_next()
+
+    #user_form_auth_page.select_domain_in_drop_down(TEST_DATA["domain_to_select"])
 
     log.info('Assert second card to enter information is opened')
+    assert user_form_auth_page.check_card_is_opened() == TEST_DATA["second_card_number"]
 
-    log.info('Select 3 random interests, upload image. Click "next')
+    log.info('Select 3 random interests, upload image. Click "next"')
+    interests_page = InterestsPage(browser)
+    interests_page.unselect_in_checkbox()
+    interests_page.select_in_checkbox()
 
-    log.info('Assert third card to enter information is opened')
+    interests_page.upload_image(TEST_DATA['path'])
+
+
+    # log.info('Assert third card to enter information is opened')
+    # assert user_form_auth_page.check_card_is_opened() == TEST_DATA["third_card_number"]

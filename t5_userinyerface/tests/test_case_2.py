@@ -15,6 +15,7 @@ def test_userinyrface(browser):
     start_page.go_to_site(CONFIG_DATA["URL"])
 
     log.info('Assert welcome page is opened')
+    assert start_page.check_auth_page_is_open() == True
 
     log.info('Click to go the next page')
     start_page.click_on_link_to_next_page()
