@@ -12,7 +12,7 @@ def test_userinyrface(browser):
     log.info('Opening browser')
     start_page = StartPage(browser)
     log.info('Openning page')
-    start_page.go_to_site(CONFIG_DATA["URL"])
+    start_page.open(CONFIG_DATA["URL"])
 
     log.info('Assert welcome page is opened')
     assert start_page.check_auth_page_is_open() == True
@@ -36,7 +36,7 @@ def test_userinyrface(browser):
     user_form_auth_page.click_to_accept_terms()
     user_form_auth_page.click_next()
 
-    #user_form_auth_page.select_domain_in_drop_down(TEST_DATA["domain_to_select"])
+    user_form_auth_page.select_domain_in_drop_down(TEST_DATA["domain_to_select"])
 
     log.info('Assert second card to enter information is opened')
     assert user_form_auth_page.check_card_is_opened() == TEST_DATA["second_card_number"]

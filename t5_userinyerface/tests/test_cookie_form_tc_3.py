@@ -12,10 +12,10 @@ def test_userinyrface(browser):
     log.info('Opening browser')
     start_page = StartPage(browser)
     log.info('Openning page')
-    start_page.go_to_site(CONFIG_DATA["URL"])
+    start_page.open(CONFIG_DATA["URL"])
 
     log.info('Assert welcome page is opened')
-    assert start_page.check_auth_page_is_open() == True
+    assert start_page.check_auth_page_is_open() is True
 
     log.info('Click to go the next page')
     start_page.click_on_link_to_next_page()
@@ -25,7 +25,7 @@ def test_userinyrface(browser):
     auth_page.click_to_accept_cookie()
 
     log.info('Assert "Cookie" form is closed')
-    assert auth_page.check_cookie_form_is_open() == False
+    assert auth_page.check_cookie_form_is_open() is False
 
     log.info('Assert "Cookie" accepted')
     assert auth_page.get_all_cookies() != []

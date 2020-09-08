@@ -1,4 +1,3 @@
-import time
 from t5_userinyerface.pages.auth_page import AuthPage
 from t5_userinyerface.pages.start_page import StartPage
 from t5_userinyerface.helpers.loader import Loader
@@ -12,7 +11,7 @@ def test_userinyrface(browser):
     log.info('Opening browser')
     start_page = StartPage(browser)
     log.info('Openning page')
-    start_page.go_to_site(CONFIG_DATA["URL"])
+    start_page.open(CONFIG_DATA["URL"])
 
     log.info('Assert welcome page is opened')
     assert start_page.check_auth_page_is_open() == True
@@ -20,11 +19,6 @@ def test_userinyrface(browser):
     log.info('Click to go the next page')
     start_page.click_on_link_to_next_page()
 
-    log.info('Close "Help" window')
+    log.info('Assert timer from null')
     auth_page = AuthPage(browser)
-
-    auth_page.click_send_to_button()
-
-    time.sleep(5)
-    log.info('Assert "Help" window is closed')
-    assert auth_page.check_help_window_is_closed() == True
+    assert auth_page.get_time_from_timer() == TEST_DATA["timer_value"]
