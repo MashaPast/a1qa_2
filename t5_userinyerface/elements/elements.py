@@ -49,6 +49,7 @@ class Button(BaseElement):
         except TimeoutException:
             return False
 
+
     def get_text(self):
         return self.find_element().text
 

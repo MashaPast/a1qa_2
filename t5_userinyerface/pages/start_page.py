@@ -3,7 +3,7 @@ from t5_userinyerface.default_page.default_page import BasePage
 from t5_userinyerface.elements.elements import Button
 
 
-class StartPage(BasePage):
+class WelcomePage(BasePage):
 
     CLICK_BUTTON = (By.XPATH, './/*[contains(@class, "start__link")]')
     MAIN_LOGO = (By.XPATH, './/*[contains(@class, "logo__icon")]')
@@ -13,8 +13,8 @@ class StartPage(BasePage):
         super().__init__(driver)
 
     def click_on_link_to_next_page(self):
-        Button(StartPage.CLICK_BUTTON, self.driver).click_on_button()
+        Button(WelcomePage.CLICK_BUTTON, self.driver).click_on_button()
 
     def check_auth_page_is_open(self):
-        return Button(StartPage.MAIN_LOGO, self.driver).check_form_exists()
+        return Button(WelcomePage.MAIN_LOGO, self.driver).check_form_exists()
 

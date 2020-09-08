@@ -1,15 +1,21 @@
+from enum import Enum
 from t5_userinyerface.logger.logger import log
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 
+class SupportedBrowsers(Enum):
+    Chrome = 'Chrome'
+    Firefox = 'Firefox'
+
+
 class Browser:
     @staticmethod
     def get_browser_by_name(browser_name: str):
-        if browser_name == "Chrome":
+        if browser_name == SupportedBrowsers.Chrome.value:
             return Chrome.get_browser()
-        if browser_name == "Firefox":
+        if browser_name == SupportedBrowsers.Firefox.value:
             return Firefox.get_browser()
 
 

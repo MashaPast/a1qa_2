@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from t5_userinyerface.default_page.default_page import BasePage
 from t5_userinyerface.elements.elements import Button, UserForm
-from t5_userinyerface.helpers.helpers import generate_random_pass, generate_random_email
+from t5_userinyerface.helpers.helpers import generate_random_pass, generate_random_str
 
 
 class AuthPage(BasePage):
@@ -11,7 +11,7 @@ class AuthPage(BasePage):
     SEND_TO_BUTTON = (By.XPATH, '//*[@id="app"]/div/div[3]/div/div/div[2]/button')
     HELP_FORM_IS_HIDDEN = (By.XPATH, './/*[contains(@class, "help-form is-hidden")]')
     TIMER = (By.XPATH, './/*[contains(@class, "timer timer--white timer--center")]')
-
+    #Button(AuthPage.ACCEPT_COOKIE, self.driver)
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -70,7 +70,7 @@ class UserFormAuthPage(BasePage):
         pass_field.auth.send_text(password)
 
     def fill_email(self):
-        email = generate_random_email()
+        email = generate_random_str()
         pass_field = UserForm(UserFormAuthPage.EMAIL_FIELD, self.driver)
         pass_field.auth.send_text(email)
 
