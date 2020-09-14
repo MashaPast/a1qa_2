@@ -8,7 +8,7 @@
 export CONFIG='./t5_userinyerface/resources/configurations.json'
 ```
 
-* running task 5
+* running all tests in task 5
 ```bash 
-python3 -m pytest -v -s t5_userinyerface/tests/test_userinyerface.py  
+python3 -m pytest -v -s t5_userinyerface/tests/
 ```

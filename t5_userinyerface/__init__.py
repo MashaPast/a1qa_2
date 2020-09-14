@@ -1,1 +1,1 @@
-from t5_userinyerface.config_data import CONFIG_DATA
+from t5_userinyerface.resources.config_data import CONFIG_DATA

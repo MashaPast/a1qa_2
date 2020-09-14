@@ -1,31 +1,32 @@
 from selenium.webdriver.common.by import By
-from t5_userinyerface.default_page.default_page import BasePage
-from t5_userinyerface.elements.elements import Button, CheckBox
-
+from t5_userinyerface.base_items.default_page import BasePage
+from t5_userinyerface.elements.checkbox import CheckBox
+from t5_userinyerface.elements.button import Button
+from t5_userinyerface.helpers.helpers import encode_image_with_base64
 
 
 class InterestsPage(BasePage):
 
-    UNSELECT = (By.XPATH, './/*[contains(@for, "interest_unselectall")]')
-    CLOSETS = (By.XPATH, './/*[contains(@for, "interest_closets")]')
-    BALLS = (By.XPATH, './/*[contains(@for, "interest_balls")]')
-    SQUARES = (By.XPATH, './/*[contains(@for, "interest_squares")]')
-    DOWNLOAD = (By.XPATH, './/*[text()="upload"]')
-    NEXT_BUTTON = (By.XPATH, './/*[text()="Next"]')
-
     def __init__(self, driver):
         super().__init__(driver)
+        self.UNSELECT = CheckBox((By.XPATH, '//div[@class = "page-indicator"]'), driver)
+        self.CLOSETS = CheckBox((By.XPATH, '//input[@placeholder = "Choose Password"]'), driver)
+        self.BALLS = CheckBox((By.XPATH, '//input[@placeholder = "Your email"]'), driver)
+        self.SQUARES = CheckBox((By.XPATH, '//input[@placeholder = "Domain"]'), driver)
+        self.UPLOAD = Button((By.XPATH, '//div[@class = "avatar-and-interests__avatar-image"]'), driver)
+        self.NEXT_BUTTON = Button((By.XPATH, '//a[contains(text(), "Next")]'), driver)
 
     def unselect_in_checkbox(self):
-        return CheckBox(InterestsPage.UNSELECT, self.driver).select_in_checkbox()
+        return self.UNSELECT.click()
 
     def select_in_checkbox(self):
-        CheckBox(InterestsPage.CLOSETS, self.driver).select_in_checkbox()
-        CheckBox(InterestsPage.BALLS, self.driver).select_in_checkbox()
-        CheckBox(InterestsPage.SQUARES, self.driver).select_in_checkbox()
+        self.CLOSETS.click()
+        self.BALLS.click()
+        self.SQUARES.click()
 
     def upload_image(self, path):
-        Button(InterestsPage.DOWNLOAD, self.driver).upload_image(path)
+        base64_im = encode_image_with_base64()
+        print(base64_im)
 
     def click_next(self):
-        Button(InterestsPage.NEXT_BUTTON, self.driver).click_on_button()
+        self.NEXT_BUTTON.click()

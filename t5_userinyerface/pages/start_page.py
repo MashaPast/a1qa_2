@@ -1,20 +1,18 @@
 from selenium.webdriver.common.by import By
-from t5_userinyerface.default_page.default_page import BasePage
-from t5_userinyerface.elements.elements import Button
+from t5_userinyerface.base_items.default_page import BasePage
+from t5_userinyerface.elements.button import Button
 
 
 class WelcomePage(BasePage):
 
-    CLICK_BUTTON = (By.XPATH, './/*[contains(@class, "start__link")]')
-    MAIN_LOGO = (By.XPATH, './/*[contains(@class, "logo__icon")]')
-
-
     def __init__(self, driver):
         super().__init__(driver)
+        self.CLICK_BUTTON = Button((By.XPATH, '//a[contains(@class, "start__link")]'), driver)
+        self.MAIN_LOGO = Button((By.XPATH, '//div[contains(@class, "logo__icon")]'), driver)
 
     def click_on_link_to_next_page(self):
-        Button(WelcomePage.CLICK_BUTTON, self.driver).click_on_button()
+        self.CLICK_BUTTON.click()
 
     def check_auth_page_is_open(self):
-        return Button(WelcomePage.MAIN_LOGO, self.driver).check_form_exists()
+        return self.MAIN_LOGO.check_form_exists()
 

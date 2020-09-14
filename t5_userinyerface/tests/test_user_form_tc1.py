@@ -1,3 +1,5 @@
+from datetime import time
+
 from t5_userinyerface.pages.auth_page import UserFormAuthPage
 from t5_userinyerface.pages.interests_page import InterestsPage
 from t5_userinyerface.pages.start_page import WelcomePage
@@ -24,16 +26,19 @@ def test_user_form(browser):
     user_form_auth_page = UserFormAuthPage(browser)
     assert user_form_auth_page.check_card_is_opened() == TEST_DATA["first_card_number"]
 
-    log.info('Enter correct password, email and accept terms. Click "next"')
+    log.info('Clear password, email and accept terms')
     user_form_auth_page.clear_pass()
     user_form_auth_page.clear_email()
     user_form_auth_page.clear_domain()
 
+    log.info('Enter correct password, email and accept terms. Click "next"')
     user_form_auth_page.fill_pass()
     user_form_auth_page.fill_email()
     user_form_auth_page.fill_domain(TEST_DATA["domain"])
 
+    log.info('Click to accept terms')
     user_form_auth_page.click_to_accept_terms()
+    log.info('Click "next"')
     user_form_auth_page.click_next()
 
     user_form_auth_page.select_domain_in_drop_down(TEST_DATA["domain_to_select"])
@@ -45,6 +50,7 @@ def test_user_form(browser):
     interests_page = InterestsPage(browser)
     interests_page.unselect_in_checkbox()
     interests_page.select_in_checkbox()
+
 
     interests_page.upload_image(TEST_DATA['path'])
 
