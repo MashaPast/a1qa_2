@@ -1,5 +1,3 @@
-from datetime import time
-
 from t5_userinyerface.pages.auth_page import UserFormAuthPage
 from t5_userinyerface.pages.interests_page import InterestsPage
 from t5_userinyerface.pages.start_page import WelcomePage
@@ -31,29 +29,33 @@ def test_user_form(browser):
     user_form_auth_page.clear_email()
     user_form_auth_page.clear_domain()
 
-    log.info('Enter correct password, email and accept terms. Click "next"')
+    log.info('Enter correct password, email and accept terms')
     user_form_auth_page.fill_pass()
     user_form_auth_page.fill_email()
     user_form_auth_page.fill_domain(TEST_DATA["domain"])
 
     log.info('Click to accept terms')
     user_form_auth_page.click_to_accept_terms()
+
+
+
+    log.info('Select domain')
+    user_form_auth_page.click_drop_down_menu()
+    user_form_auth_page.select_org_domain()
+
     log.info('Click "next"')
     user_form_auth_page.click_next()
-
-    user_form_auth_page.select_domain_in_drop_down(TEST_DATA["domain_to_select"])
 
     log.info('Assert second card to enter information is opened')
     assert user_form_auth_page.check_card_is_opened() == TEST_DATA["second_card_number"]
 
-    log.info('Select 3 random interests, upload image. Click "next"')
+    log.info('Select 3 random interests')
     interests_page = InterestsPage(browser)
     interests_page.unselect_in_checkbox()
     interests_page.select_in_checkbox()
 
+    log.info('Upload image')
+    interests_page.upload_image()
 
-    interests_page.upload_image(TEST_DATA['path'])
 
 
-    # log.info('Assert third card to enter information is opened')
-    # assert user_form_auth_page.check_card_is_opened() == TEST_DATA["third_card_number"]

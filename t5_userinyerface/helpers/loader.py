@@ -15,7 +15,10 @@ class Loader:
     @staticmethod
     def get_config():
         if Loader.data is None:
-            config = Loader.read_json_file(os.environ["CONFIG"])
+            path = os.environ["CONFIG"]
+            if path is None:
+                path = './t5_userinyerface/resources/configurations.json'
+            config = Loader.read_json_file(path)
             return config
         else:
             return Loader.data

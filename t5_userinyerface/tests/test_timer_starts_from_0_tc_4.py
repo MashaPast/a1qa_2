@@ -14,7 +14,7 @@ def test_timer_tc_4(browser):
     welcome_page.open(CONFIG_DATA["URL"])
 
     log.info('Assert welcome page is opened')
-    assert welcome_page.check_auth_page_is_open() == True
+    assert welcome_page.check_auth_page_is_open() is True
 
     log.info('Click to go the next page')
     welcome_page.click_on_link_to_next_page()

@@ -2,7 +2,9 @@ import random
 import string
 import base64
 from t5_userinyerface import CONFIG_DATA
+from t5_userinyerface.helpers.loader import Loader
 
+TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
 def generate_random_str(n=5):
     random_str = ''.join([random.choice(string.ascii_letters) for i in range(n)])
@@ -19,6 +21,6 @@ def generate_random_pass(n=15):
 
 
 def encode_image_with_base64():
-    with open(CONFIG_DATA["IMAGE_PATH"], "rb") as image_file:
+    with open(TEST_DATA["path"], "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
         return encoded_string

@@ -4,6 +4,5 @@
     "second_card_number": "2 / 4",
     "third_card_number": "3 / 4",
     "domain": "com",
-    "domain_to_select": ".org",
-    "path": "/home/masha/Downloads/avatar (2).png"
+    "path": "./t5_userinyerface/resources/avatar.png"
 }

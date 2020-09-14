@@ -3,6 +3,5 @@
     "BROWSER": "Chrome",
     "default_timeout": 7,
     "LOG_DIR": "./t5_userinyerface/tests/logs/",
-    "ASSET_PATH": "./t5_userinyerface/resources/test_data.json",
-    "IMAGE_PATH": "./t5_userinyerface/resources/avatar.png"
+    "ASSET_PATH": "./t5_userinyerface/resources/test_data.json"
 }

@@ -16,3 +16,4 @@ def browser(request):
 
     log.debug('Tear-down')
     driver.quit()
+

@@ -1,10 +1,7 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-
 from t5_userinyerface.base_items.default_page import BasePage
 from t5_userinyerface.elements.button import Button
 from t5_userinyerface.elements.user_form_item import UserFormItem
-from t5_userinyerface.elements.user_form import UserForm
 from t5_userinyerface.helpers.helpers import generate_random_pass, generate_random_str
 
 
@@ -45,7 +42,8 @@ class UserFormAuthPage(BasePage):
         self.EMAIL_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Your email"]'), driver)
         self.DOMAIN_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Domain"]'), driver)
         self.ACCEPT_TERMS_CHECKBOX = UserFormItem((By.XPATH, '//span[contains(@class, "icon icon-check checkbox__check")]'), driver)
-        self.DOMAIN_DROP_DOWN = Button((By.XPATH, '//div[contains(@class, "dropdown__list")]'), driver)
+        self.DOMAIN_DROP_DOWN = UserFormItem((By.XPATH, '//div[contains(@class, "dropdown__field")]'), driver)
+        self.DOMAIN_DROP_DOWN_ORG = UserFormItem((By.XPATH, '//div[contains(text(), ".org")]'), driver)
         self.NEXT_BUTTON = UserFormItem((By.XPATH, '//a[contains(text(), "Next")]'), driver)
 
     def check_card_is_opened(self):
@@ -77,8 +75,8 @@ class UserFormAuthPage(BasePage):
     def click_next(self):
         self.NEXT_BUTTON.click()
 
-    def select_domain_in_drop_down(self, domain):
-        select = Select(self.DOMAIN_DROP_DOWN.find_element())
+    def click_drop_down_menu(self):
+        self.DOMAIN_DROP_DOWN.click()
 
-        # select by visible text
-        select.select_by_visible_text(domain)
+    def select_org_domain(self):
+        self.DOMAIN_DROP_DOWN_ORG.click()
