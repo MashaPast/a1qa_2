@@ -13,11 +13,16 @@ class Loader:
             return data
 
     @staticmethod
-    def get_config(path_to_config):
+    def get_config():
+        """
+        setting environment variable for path to config before running tests
+        export CONFIG='./t6_rest_api_tasks/resources/configurations.json'
+
+        """
         if Loader.data is None:
             path = os.environ["CONFIG"]
             if path is None:
-                path = path_to_config
+                path = './t6_rest_api_tasks/resources/configurations.json'
             config = Loader.read_json_file(path)
             return config
         else:

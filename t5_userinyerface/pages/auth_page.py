@@ -6,13 +6,13 @@ from t5_userinyerface.helpers.helpers import generate_random_pass, generate_rand
 
 
 class AuthPage(BasePage):
+    ACCEPT_COOKIE = Button((By.XPATH, './/*[text() = "Not really, no"]'))
+    SEND_TO_BUTTON = Button((By.XPATH, '//button[contains(@class, "send-to-bottom-button")]'))
+    HELP_FORM_IS_HIDDEN = Button((By.XPATH, '//div[@class = "help-form is-hidden"]'))
+    TIMER = Button((By.XPATH, '//div[@class = "timer timer--white timer--center"]'))
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.ACCEPT_COOKIE = Button((By.XPATH, './/*[text() = "Not really, no"]'), driver)
-        self.SEND_TO_BUTTON = Button((By.XPATH, '//button[contains(@class, "send-to-bottom-button")]'), driver)
-        self.HELP_FORM_IS_HIDDEN = Button((By.XPATH, '//div[@class = "help-form is-hidden"]'), driver)
-        self.TIMER = Button((By.XPATH, '//div[@class = "timer timer--white timer--center"]'), driver)
 
     def click_send_to_button(self):
         return self.SEND_TO_BUTTON.click()
@@ -34,17 +34,17 @@ class AuthPage(BasePage):
 
 
 class UserFormAuthPage(BasePage):
+    CARD_NUM = UserFormItem((By.XPATH, '//div[@class = "page-indicator"]'))
+    PASS_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Choose Password"]'))
+    EMAIL_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Your email"]'))
+    DOMAIN_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Domain"]'))
+    ACCEPT_TERMS_CHECKBOX = UserFormItem((By.XPATH, '//span[contains(@class, "icon icon-check checkbox__check")]'))
+    DOMAIN_DROP_DOWN = UserFormItem((By.XPATH, '//div[contains(@class, "dropdown__field")]'))
+    DOMAIN_DROP_DOWN_ORG = UserFormItem((By.XPATH, '//div[contains(text(), ".org")]'))
+    NEXT_BUTTON = UserFormItem((By.XPATH, '//a[contains(text(), "Next")]'))
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.CARD_NUM = UserFormItem((By.XPATH, '//div[@class = "page-indicator"]'), driver)
-        self.PASS_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Choose Password"]'), driver)
-        self.EMAIL_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Your email"]'), driver)
-        self.DOMAIN_FIELD = UserFormItem((By.XPATH, '//input[@placeholder = "Domain"]'), driver)
-        self.ACCEPT_TERMS_CHECKBOX = UserFormItem((By.XPATH, '//span[contains(@class, "icon icon-check checkbox__check")]'), driver)
-        self.DOMAIN_DROP_DOWN = UserFormItem((By.XPATH, '//div[contains(@class, "dropdown__field")]'), driver)
-        self.DOMAIN_DROP_DOWN_ORG = UserFormItem((By.XPATH, '//div[contains(text(), ".org")]'), driver)
-        self.NEXT_BUTTON = UserFormItem((By.XPATH, '//a[contains(text(), "Next")]'), driver)
 
     def check_card_is_opened(self):
         return self.CARD_NUM.get_text()

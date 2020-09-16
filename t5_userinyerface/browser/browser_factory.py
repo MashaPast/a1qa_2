@@ -14,16 +14,16 @@ class Browser:
     @staticmethod
     def get_browser_by_name(browser_name: str):
         if browser_name == SupportedBrowsers.Chrome.value:
-            return Chrome.get_browser()
+            return Chrome.get_driver()
         if browser_name == SupportedBrowsers.Firefox.value:
-            return Firefox.get_browser()
+            return Firefox.get_driver()
 
 
 class Chrome(Browser):
     instance = None
 
     @staticmethod
-    def get_browser():
+    def get_driver():
         log.debug('Get Chrome driver')
         if Chrome.instance is None:
             Chrome.instance = webdriver.Chrome(ChromeDriverManager().install(), service_log_path='/dev/null')
@@ -36,7 +36,7 @@ class Firefox(Browser):
     instance = None
 
     @staticmethod
-    def get_browser():
+    def get_driver():
         log.debug('Get Firefox driver')
         if Firefox.instance is None:
             Firefox.instance = webdriver.Firefox(executable_path=GeckoDriverManager().install())

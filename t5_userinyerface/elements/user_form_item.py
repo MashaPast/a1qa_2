@@ -4,8 +4,8 @@ from t5_userinyerface.base_items.base_element import BaseElement
 
 
 class UserFormItem(BaseElement):
-    def __init__(self, locator: tuple, driver):
-        super().__init__(locator, driver)
+    def __init__(self, locator: tuple):
+        super().__init__(locator)
 
     def clear_field(self):
         return self.find_element().clear()

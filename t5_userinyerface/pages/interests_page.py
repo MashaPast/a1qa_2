@@ -5,15 +5,16 @@ from t5_userinyerface.elements.button import Button
 from t5_userinyerface.helpers.helpers import encode_image_with_base64
 
 class InterestsPage(BasePage):
+    UNSELECT = CheckBox((By.XPATH, '//*[contains(@for, "interest_unselectall")]'))
+    CLOSETS = CheckBox((By.XPATH, '//*[contains(@for, "interest_closets")]'))
+    BALLS = CheckBox((By.XPATH, '//*[contains(@for, "interest_balls")]'))
+    SQUARES = CheckBox((By.XPATH, '//*[contains(@for, "interest_squares")]'))
+    UPLOAD = Button((By.XPATH, '//div[@class = "avatar-and-interests__avatar-image"]'))
+    NEXT_BUTTON = Button((By.XPATH, '//a[contains(text(), "Next")]'))
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.UNSELECT = CheckBox((By.XPATH, '//*[contains(@for, "interest_unselectall")]'), driver)
-        self.CLOSETS = CheckBox((By.XPATH, '//*[contains(@for, "interest_closets")]'), driver)
-        self.BALLS = CheckBox((By.XPATH, '//*[contains(@for, "interest_balls")]'), driver)
-        self.SQUARES = CheckBox((By.XPATH, '//*[contains(@for, "interest_squares")]'), driver)
-        self.UPLOAD = Button((By.XPATH, '//div[@class = "avatar-and-interests__avatar-image"]'), driver)
-        self.NEXT_BUTTON = Button((By.XPATH, '//a[contains(text(), "Next")]'), driver)
+
 
     def unselect_in_checkbox(self):
         return self.UNSELECT.click()

@@ -4,6 +4,8 @@ from t5_userinyerface.base_items.base_element import BaseElement
 
 
 class Button(BaseElement):
+    def __init__(self, locator: tuple):
+        super().__init__(locator)
 
     def upload_image(self, path):
         self.find_element().send_keys(path)
