@@ -1,5 +1,0 @@
-{
-  "URL": "https://jsonplaceholder.typicode.com",
-  "ASSET_PATH": "./resources/test_data.json",
-  "LOG_DIR": "./t6_rest_api_tasks/tests/logs/"
-}
