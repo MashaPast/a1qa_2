@@ -1,0 +1,61 @@
+from t5_userinyerface.pages.auth_page import UserFormAuthPage
+from t5_userinyerface.pages.interests_page import InterestsPage
+from t5_userinyerface.pages.start_page import WelcomePage
+from t5_userinyerface.helpers.loader import Loader
+from t5_userinyerface.logger.logger import log
+from t5_userinyerface import CONFIG_DATA
+
+TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
+
+
+def test_user_form(browser):
+    log.info('Opening browser')
+    welcome_page = WelcomePage(browser)
+    log.info('Openning welcome page')
+    welcome_page.open(CONFIG_DATA["URL"])
+
+    log.info('Assert welcome page is opened')
+    assert welcome_page.check_auth_page_is_open() == True
+
+    log.info('Click to go the next page')
+    welcome_page.click_on_link_to_next_page()
+
+    log.info('Assert first card to enter information is opened')
+    user_form_auth_page = UserFormAuthPage(browser)
+    assert user_form_auth_page.check_card_is_opened() == TEST_DATA["first_card_number"]
+
+    log.info('Clear password, email and accept terms')
+    user_form_auth_page.clear_pass()
+    user_form_auth_page.clear_email()
+    user_form_auth_page.clear_domain()
+
+    log.info('Enter correct password, email and accept terms')
+    user_form_auth_page.fill_pass()
+    user_form_auth_page.fill_email()
+    user_form_auth_page.fill_domain(TEST_DATA["domain"])
+
+    log.info('Click to accept terms')
+    user_form_auth_page.click_to_accept_terms()
+
+
+
+    log.info('Select domain')
+    user_form_auth_page.click_drop_down_menu()
+    user_form_auth_page.select_org_domain()
+
+    log.info('Click "next"')
+    user_form_auth_page.click_next()
+
+    log.info('Assert second card to enter information is opened')
+    assert user_form_auth_page.check_card_is_opened() == TEST_DATA["second_card_number"]
+
+    log.info('Select 3 random interests')
+    interests_page = InterestsPage(browser)
+    interests_page.unselect_in_checkbox()
+    interests_page.select_in_checkbox()
+
+    log.info('Upload image')
+    interests_page.upload_image()
+
+
+

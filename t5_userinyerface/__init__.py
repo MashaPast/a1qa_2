@@ -1,0 +1,1 @@
+from t5_userinyerface.resources.config_data import CONFIG_DATA
