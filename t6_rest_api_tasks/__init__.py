@@ -1,0 +1,1 @@
+from t6_rest_api_tasks.resources.config_data import CONFIG_DATA

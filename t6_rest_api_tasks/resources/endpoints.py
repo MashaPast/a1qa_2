@@ -1,0 +1,5 @@
+all_posts = '/posts'
+post_num_99 = '/posts/99'
+post_num_150 = '/posts/150'
+all_users = '/users'
+user_num_5 = '/users/5'
