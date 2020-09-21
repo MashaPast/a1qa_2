@@ -5,7 +5,7 @@ from t5_userinyerface.resources.config_data import CONFIG_DATA
 class BasePage:
     driver = Browser.get_browser_by_name(CONFIG_DATA["BROWSER"])
 
-    def __init__(self, driver):
+    def __init__(self):
         pass
 
 

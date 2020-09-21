@@ -8,9 +8,9 @@ from t5_userinyerface import CONFIG_DATA
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
 
-def test_user_form(browser):
+def test_user_form():
     log.info('Opening browser')
-    welcome_page = WelcomePage(browser)
+    welcome_page = WelcomePage()
     log.info('Openning welcome page')
     welcome_page.open(CONFIG_DATA["URL"])
 
@@ -21,7 +21,7 @@ def test_user_form(browser):
     welcome_page.click_on_link_to_next_page()
 
     log.info('Assert first card to enter information is opened')
-    user_form_auth_page = UserFormAuthPage(browser)
+    user_form_auth_page = UserFormAuthPage()
     assert user_form_auth_page.check_card_is_opened() == TEST_DATA["first_card_number"]
 
     log.info('Clear password, email and accept terms')
@@ -50,7 +50,7 @@ def test_user_form(browser):
     assert user_form_auth_page.check_card_is_opened() == TEST_DATA["second_card_number"]
 
     log.info('Select 3 random interests')
-    interests_page = InterestsPage(browser)
+    interests_page = InterestsPage()
     interests_page.unselect_in_checkbox()
     interests_page.select_in_checkbox()
 

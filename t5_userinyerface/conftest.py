@@ -4,7 +4,7 @@ from t5_userinyerface.logger.logger import log
 from t5_userinyerface import CONFIG_DATA
 
 
-@pytest.fixture(params=[CONFIG_DATA["BROWSER"]], scope="session")
+@pytest.fixture(params=[CONFIG_DATA["BROWSER"]], scope="session", autouse=True)
 def browser(request):
     log.debug('Set-up')
     driver = Browser.get_browser_by_name(request.param)

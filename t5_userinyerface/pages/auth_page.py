@@ -11,8 +11,8 @@ class AuthPage(BasePage):
     HELP_FORM_IS_HIDDEN = Button((By.XPATH, '//div[@class = "help-form is-hidden"]'))
     TIMER = Button((By.XPATH, '//div[@class = "timer timer--white timer--center"]'))
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
 
     def click_send_to_button(self):
         return self.SEND_TO_BUTTON.click()
@@ -43,8 +43,8 @@ class UserFormAuthPage(BasePage):
     DOMAIN_DROP_DOWN_ORG = UserFormItem((By.XPATH, '//div[contains(text(), ".org")]'))
     NEXT_BUTTON = UserFormItem((By.XPATH, '//a[contains(text(), "Next")]'))
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
 
     def check_card_is_opened(self):
         return self.CARD_NUM.get_text()

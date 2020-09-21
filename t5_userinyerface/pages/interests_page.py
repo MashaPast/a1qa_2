@@ -12,8 +12,8 @@ class InterestsPage(BasePage):
     UPLOAD = Button((By.XPATH, '//div[@class = "avatar-and-interests__avatar-image"]'))
     NEXT_BUTTON = Button((By.XPATH, '//a[contains(text(), "Next")]'))
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, ):
+        super().__init__()
 
 
     def unselect_in_checkbox(self):

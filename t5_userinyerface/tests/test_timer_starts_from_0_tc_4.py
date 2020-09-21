@@ -7,9 +7,9 @@ from t5_userinyerface import CONFIG_DATA
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
 
-def test_timer_tc_4(browser):
+def test_timer_tc_4():
     log.info('Opening browser')
-    welcome_page = WelcomePage(browser)
+    welcome_page = WelcomePage()
     log.info('Openning welcome page')
     welcome_page.open(CONFIG_DATA["URL"])
 
@@ -20,5 +20,5 @@ def test_timer_tc_4(browser):
     welcome_page.click_on_link_to_next_page()
 
     log.info('Assert timer from null')
-    auth_page = AuthPage(browser)
+    auth_page = AuthPage()
     assert auth_page.get_time_from_timer() == TEST_DATA["timer_value"]

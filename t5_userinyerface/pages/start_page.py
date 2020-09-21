@@ -7,8 +7,8 @@ class WelcomePage(BasePage):
     CLICK_BUTTON = Button((By.XPATH, '//a[contains(@class, "start__link")]'))
     MAIN_LOGO = Button((By.XPATH, '//div[contains(@class, "logo__icon")]'))
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
 
     def click_on_link_to_next_page(self):
         self.CLICK_BUTTON.click()

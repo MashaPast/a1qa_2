@@ -8,9 +8,9 @@ from t5_userinyerface.pages.start_page import WelcomePage
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
 
-def test_cookie_form(browser):
+def test_cookie_form():
     log.info('Opening browser')
-    welcome_page = WelcomePage(browser)
+    welcome_page = WelcomePage()
     log.info('Openning welcome page')
     welcome_page.open(CONFIG_DATA["URL"])
 
@@ -21,7 +21,7 @@ def test_cookie_form(browser):
     welcome_page.click_on_link_to_next_page()
 
     log.info('Accept cookies')
-    auth_page = AuthPage(browser)
+    auth_page = AuthPage()
     auth_page.click_to_accept_cookie()
 
     log.info('Assert "Cookie" form is closed')
