@@ -1,11 +1,13 @@
-from t6_rest_api_tasks.helpers.api_utils import api
+from t6_rest_api_tasks.helpers.api_methods import api
 from t6_rest_api_tasks import CONFIG_DATA
 from http import HTTPStatus
-from t6_rest_api_tasks.helpers.helpers import check_list_sorted_ascending, get_user_with_id_5
+from t6_rest_api_tasks.helpers.api_utils import APIutils
 from t6_rest_api_tasks.helpers.loader import Loader
 from t6_rest_api_tasks.resources.endpoints import all_posts, post_num_99, post_num_150, all_users, user_num_5
 from t6_rest_api_tasks.resources.post_model import req_body
 from t6_rest_api_tasks.logger.logger import log
+from t6_rest_api_tasks.resources.user_model import User
+
 
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 
@@ -13,8 +15,9 @@ TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 def test_get_all_posts():
     log.info('Step 1. Getting all posts')
     response = api.make_get_request(all_posts)
-    body = api.get_response_body(response)
-    headers = api.get_response_headers(response)
+    body = response.json()
+    log.info('Getting response body {}'.format(body))
+    headers = response.headers
 
     log.info('Assert status_code from {} is 200'.format(all_posts))
     assert response.status_code == HTTPStatus.OK
@@ -23,11 +26,12 @@ def test_get_all_posts():
     assert headers['Content-Type'] == TEST_DATA['content-type']
 
     log.info('Assert list of posts is sorted ascending')
-    assert check_list_sorted_ascending(body) is True
+    assert APIutils.check_list_sorted_ascending(body) is True
 
     log.info('Step 2. Getting post num 99')
     response = api.make_get_request(post_num_99)
-    body = api.get_response_body(response)
+    body = response.json()
+    log.info('Getting response body {}'.format(body))
 
     log.info('Assert status_code from {} is 200'.format(post_num_99))
     assert response.status_code == HTTPStatus.OK
@@ -42,7 +46,8 @@ def test_get_all_posts():
 
     log.info('Step 3. Getting post num 150')
     response = api.make_get_request(post_num_150)
-    body = api.get_response_body(response)
+    body = response.json()
+    log.info('Getting response body {}'.format(body))
 
     log.info('Assert status_code from {} is 404'.format(post_num_150))
     assert response.status_code == HTTPStatus.NOT_FOUND
@@ -51,8 +56,10 @@ def test_get_all_posts():
     assert body == {}
 
     log.info('Step 4. Making post request')
+    log.info('Post request body {}'.format(req_body))
     response = api.make_post_request(all_posts, req_body)
-    res_body = api.get_response_body(response)
+    res_body = response.json()
+    log.info('Getting response body {}'.format(body))
 
     log.info('Assert status_code from {} is 201'.format(all_posts))
     assert response.status_code == HTTPStatus.CREATED
@@ -67,23 +74,26 @@ def test_get_all_posts():
 
     log.info('Step 5. Getting all users')
     response = api.make_get_request(all_users)
-    body = api.get_response_body(response)
-    headers = api.get_response_headers(response)
+    body = response.json()
+    log.info('Getting response body {}'.format(body))
+    headers = response.headers
 
     log.info('Assert status_code from {} is 200'.format(all_users))
     assert response.status_code == HTTPStatus.OK
     assert headers['Content-Type'] == TEST_DATA['content-type']
 
     log.info('Getting user_num_5 from response body'.format(all_users))
-    user_5_from_resp = get_user_with_id_5(body)
+    user_5_from_resp = APIutils.get_user_with_id_5(body)
 
     log.info('Assert user_num_5 from response body equals test data'.format(all_users))
+    print(User.from_dict(user_5_from_resp))
     assert user_5_from_resp == TEST_DATA['user_num_5']
 
     log.info('Step 6. Getting user_num_5')
     response = api.make_get_request(user_num_5)
-    body = api.get_response_body(response)
-    headers = api.get_response_headers(response)
+    body = response.json()
+    log.info('Getting response body {}'.format(body))
+    headers = response.headers
 
     log.info('Assert status_code from {} is 200'.format(user_num_5))
     assert response.status_code == HTTPStatus.OK
