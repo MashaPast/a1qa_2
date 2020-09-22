@@ -1,5 +1,6 @@
 import random
 import string
+from typing import Dict
 
 
 class APIutils:
@@ -19,7 +20,7 @@ class APIutils:
         return random_str
 
     @staticmethod
-    def get_user_with_id_5(list_of_users):
+    def get_user(list_of_users, id) -> Dict:
         for user in list_of_users:
-            if user['id'] == 5:
+            if user['id'] == id:
                 return user

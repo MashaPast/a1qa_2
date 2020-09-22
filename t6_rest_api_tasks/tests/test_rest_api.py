@@ -1,3 +1,4 @@
+from typing import Dict
 from t6_rest_api_tasks.helpers.api_methods import api
 from t6_rest_api_tasks import CONFIG_DATA
 from http import HTTPStatus
@@ -74,7 +75,7 @@ def test_get_all_posts():
 
     log.info('Step 5. Getting all users')
     response = api.make_get_request(all_users)
-    body = response.json()
+    users: Dict = response.json()
     log.info('Getting response body {}'.format(body))
     headers = response.headers
 
@@ -83,16 +84,15 @@ def test_get_all_posts():
     assert headers['Content-Type'] == TEST_DATA['content-type']
 
     log.info('Getting user_num_5 from response body'.format(all_users))
-    user_5_from_resp = APIutils.get_user_with_id_5(body)
+    user_5_from_resp = APIutils.get_user(users, 5)
 
     log.info('Assert user_num_5 from response body equals test data'.format(all_users))
-    print(User.from_dict(user_5_from_resp))
-    assert user_5_from_resp == TEST_DATA['user_num_5']
+    get_user_step_5 = User.from_dict(user_5_from_resp)
 
     log.info('Step 6. Getting user_num_5')
     response = api.make_get_request(user_num_5)
-    body = response.json()
-    log.info('Getting response body {}'.format(body))
+    user_5 = response.json()
+    log.info('Getting response body {}'.format(user_5))
     headers = response.headers
 
     log.info('Assert status_code from {} is 200'.format(user_num_5))
@@ -101,4 +101,5 @@ def test_get_all_posts():
     assert headers['Content-Type'] == TEST_DATA['content-type']
 
     log.info('Assert response body from /users/5 equals response body from step 5')
-    assert user_5_from_resp == body
+    get_user_step_6 = User.from_dict(user_5)
+    assert get_user_step_5 == get_user_step_6

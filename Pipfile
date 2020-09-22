@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 dataclasses-json = "*"
-pytest = "*"
+pytest = "6.0.1"
 requests = "*"
 
 [requires]
