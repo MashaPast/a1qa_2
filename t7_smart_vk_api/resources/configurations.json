@@ -1,0 +1,7 @@
+{
+    "URL": "https://vk.com/",
+    "BROWSER": "Chrome",
+    "default_timeout": 7,
+    "LOG_DIR": "./t7_smart_vk_api/tests/logs/",
+    "ASSET_PATH": "./t7_smart_vk_api/resources/test_data.json"
+}
