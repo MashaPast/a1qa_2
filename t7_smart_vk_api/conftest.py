@@ -14,5 +14,5 @@ def browser(request):
 
     yield driver
 
-    # log.debug('Tear-down')
-    # driver.quit()
+    log.debug('Tear-down')
+    driver.quit()

@@ -1,5 +1,10 @@
 {
     "email":  "autoperftester@gmail.com",
     "password":  "PuV6j_.2&$m9h?UYY",
-    "token": "b1862811c3f88b8d52166ad6867cea3af35b69878e4ab76e9739484fbfeb8ab10c9244e75a8576121b33a"
+    "token": "d64fad626d8491fdb11fb539fb2668ad52134c0b74dd0bdedf3f3d67532615f0ac4c48d1d4b1269692e7b",
+    "user_id": 381108928,
+    "PATH_TO_PIC": "./t7_smart_vk_api/resources/forest.jpg",
+    "API_VERS": 5.124,
+    "API_URL": "https://api.vk.com/method/"
 }
+

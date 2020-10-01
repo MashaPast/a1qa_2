@@ -4,7 +4,7 @@ from t7_smart_vk_api.elements.button import Button
 from t7_smart_vk_api.elements.field import Field
 
 
-class WelcomePage(BasePage):
+class AuthPage(BasePage):
     EMAIL = Field((By.XPATH, '//input[contains(@id, "index_email")]'))
     PASS = Field((By.XPATH, '//input[contains(@id, "index_pass")]'))
     LOGIN = Button((By.XPATH, '//button[contains(@id, "index_login_button")]'))
@@ -20,3 +20,4 @@ class WelcomePage(BasePage):
 
     def click_log_in(self):
         self.LOGIN.click()
+

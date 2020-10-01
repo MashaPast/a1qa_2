@@ -16,13 +16,6 @@ class BaseElement(ABC):
         return WebDriverWait(BaseElement.driver, time).until(EC.presence_of_element_located(self.locator),
                                                     message=f"Can't find element by locator {self.locator}")
 
-    def find_elements(self, time=CONFIG_DATA["default_timeout"]):
-        return WebDriverWait(BaseElement.driver, time).until(EC.presence_of_element_located(self.locator),
-                                                      message=f"Can't find element by locator {self.locator}")
-
-    def get_text(self):
-        return self.find_element().text
-
     def click(self):
         self.find_element().click()
 
