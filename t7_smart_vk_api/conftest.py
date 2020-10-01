@@ -13,6 +13,6 @@ def browser(request):
     driver.maximize_window()
 
     yield driver
-
-    log.debug('Tear-down')
-    driver.quit()
+    #
+    # log.debug('Tear-down')
+    # driver.quit()

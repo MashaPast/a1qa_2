@@ -3,7 +3,7 @@ from t7_smart_vk_api.helpers.loader import Loader
 from t7_smart_vk_api.logger.logger import log
 from t7_smart_vk_api import CONFIG_DATA
 from t7_smart_vk_api.helpers.utils import Utils
-from t7_smart_vk_api.helpers.api_methods import APImethods, USER_ID
+from t7_smart_vk_api.helpers.api_methods import APIClient, USER_ID
 from t7_smart_vk_api.pages.user_page import UserPage
 
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
@@ -28,20 +28,20 @@ def test_vk_wall():
     user_page.click_my_page()
 
     log.info('Step 4. Creating random post using API and get post id from response')
-    post_message_response = APImethods.post_message(post_text)
+    post_message_response = APIClient.post_message(post_text)
     post_id = post_message_response['response']['post_id']
 
     log.info('Step 5. Checking that post is created with right text from right user')
     assert user_page.find_post(post_text)
 
     log.info('Step 6. Editing post using API - edit text and upload picture')
-    picture = APImethods.upload_picture(TEST_DATA['PATH_TO_PIC'])
-    APImethods.edit_post(post_id, edit_post_text, picture)
+    picture = APIClient.upload_picture(TEST_DATA['PATH_TO_PIC'])["response"][0]["id"]
+    APIClient.edit_post(post_id, edit_post_text, picture)
 
     log.info('Step 7. Checking that text is edited  and picture is uploaded')
 
     log.info('Step 8. Add comment to post using API')
-    APImethods.comment_post(post_id, comment_to_post)
+    APIClient.comment_post(post_id, comment_to_post)
 
     log.info('Step 9. Check comment is added from right user')
     user_post = '{}_{}'.format(USER_ID, post_id)
@@ -54,10 +54,10 @@ def test_vk_wall():
     user_page.like_post(user_post)
 
     log.info('Step 11. Check like is added using API')
-    assert APImethods.check_like(post_id) == [USER_ID]
+    assert APIClient.check_like(post_id)['response']['items'] == [USER_ID]
 
     log.info('Step 12. Delete post using API')
-    APImethods.delete_post(post_id)
+    APIClient.delete_post(post_id)
 
     log.info('Step 13. Check that post is deleted using UI')
     assert user_page.check_post_deleted(user_post) is True
