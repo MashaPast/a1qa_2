@@ -38,7 +38,7 @@ def test_vk_wall():
     picture = APIClient.upload_picture(TEST_DATA['PATH_TO_PIC'])["response"][0]["id"]
     APIClient.edit_post(post_id, edit_post_text, picture)
 
-    log.info('Step 7. Checking that text is edited  and picture is uploaded')
+    log.info('Step 7. Checking that text is edited and picture is uploaded')
 
     log.info('Step 8. Add comment to post using API')
     APIClient.comment_post(post_id, comment_to_post)
