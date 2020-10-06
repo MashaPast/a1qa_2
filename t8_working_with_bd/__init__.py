@@ -1,1 +1,0 @@
-from t8_working_with_bd.resources.config_data import CONFIG_DATA
