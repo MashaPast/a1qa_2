@@ -1,10 +1,15 @@
+import pytest
 from t7_smart_vk_api.pages.start_page import AuthPage
 from t7_smart_vk_api.helpers.loader import Loader
 from t7_smart_vk_api.logger.logger import log
 from t7_smart_vk_api import CONFIG_DATA
 from t7_smart_vk_api.helpers.utils import Utils
-from t7_smart_vk_api.helpers.api_methods import APIClient, USER_ID
+from t7_smart_vk_api.helpers.api_methods import APIClient
 from t7_smart_vk_api.pages.user_page import UserPage
+from t7_smart_vk_api.testrail.config_parser import config
+
+tr_config = config["API"]
+
 
 TEST_DATA = Loader.read_json_file(CONFIG_DATA["ASSET_PATH"])
 post_text = Utils.generate_random_str()
@@ -12,7 +17,8 @@ edit_post_text = Utils.generate_random_str()
 comment_to_post = Utils.generate_random_str()
 
 
-def test_vk_wall():
+@pytest.mark.parametrize('tr_test_id', [tr_config['tr_test_id']])
+def test_vk_wall(result, tr_test_id):
     log.info('Opening browser')
     auth_page = AuthPage()
     log.info('Step 1. Openning vk.com welcome page')
@@ -44,17 +50,17 @@ def test_vk_wall():
     APIClient.comment_post(post_id, comment_to_post)
 
     log.info('Step 9. Check comment is added from right user')
-    user_post = '{}_{}'.format(USER_ID, post_id)
+    user_post = '{}_{}'.format(APIClient.USER_ID, post_id)
     user_page.show_comments_to_post(user_post)
     assert user_page.find_post(comment_to_post)
-    assert user_page.get_comment_by_ids(user_post, USER_ID)
+    assert user_page.get_comment_by_ids(user_post, APIClient.USER_ID)
 
     log.info('Step 10. Using UI like the post')
     log.info('Post {}'.format(post_id))
     user_page.like_post(user_post)
 
     log.info('Step 11. Check like is added using API')
-    assert APIClient.check_like(post_id)['response']['items'] == [USER_ID]
+    assert APIClient.check_like(post_id)['response']['items'] == [APIClient.USER_ID]
 
     log.info('Step 12. Delete post using API')
     APIClient.delete_post(post_id)
