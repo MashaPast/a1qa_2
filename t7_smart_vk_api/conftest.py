@@ -2,7 +2,8 @@ import pytest
 from t7_smart_vk_api.browser.browser_factory import Browser
 from t7_smart_vk_api.logger.logger import log
 from t7_smart_vk_api import CONFIG_DATA
-from t7_smart_vk_api.testrail.testrail_client import client, screenshot
+from t7_smart_vk_api.testrail.testrail_client import screenshot
+from t7_smart_vk_api.testrail.testrail_helpers import send_results_to_testrail, ResultStatuses
 
 
 @pytest.fixture(params=[CONFIG_DATA["BROWSER"]], scope="session", autouse=True)
@@ -29,6 +30,7 @@ def pytest_runtest_makereport(item, call):
 
     setattr(item, "rep_" + rep.when, rep)
 
+
 @pytest.fixture()
 def result(request, tr_test_id):
     yield
@@ -36,21 +38,11 @@ def result(request, tr_test_id):
     comment = ""
     log.debug('Setting result')
     if request.node.rep_call.passed:
-        status_id = 1
+        status_id = ResultStatuses.passed.value
         comment = "Passed for {}".format(request.node.nodeid)
     if request.node.rep_call.failed:
-        status_id = 5
+        status_id = ResultStatuses.failed.value
         comment = "Failed for {}".format(request.node.nodeid)
     send_results_to_testrail(status_id, comment, tr_test_id)
 
 
-def send_results_to_testrail(status, comment, test_id):
-    log.debug('Sending results to TestRail')
-
-    add_result = client.send_post(f'add_result/{test_id}', data={
-        "status_id": status,
-        "comment": comment,
-    })
-
-    result_id = add_result['id']
-    client.send_post(f'add_attachment_to_result/{result_id}', screenshot)
